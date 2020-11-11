@@ -76,6 +76,22 @@ $grey: #828282;
 $bgGrey: #F6F6F6;
 $starGrey: #E5E5E5;
 
+/* mixins */
+
+/* tablet */
+@mixin md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+/* desktop */
+@mixin xl {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
 /* normalize.css */
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -447,17 +463,117 @@ template {
 }
 
 section {
-  padding: 100px 0;
+  padding: 80px 0;
+
+  @include xl {
+    padding: 100px 0;
+  }
 
   &.is-grey {
     background: $bgGrey;
   }
 }
 
+.is-desktop {
+  display: none;
+
+  @include xl {
+    display: block;
+  }
+}
+
+.is-mobile {
+  display: block;
+
+  @include xl {
+    display: none;
+  }
+}
+
 .content-container {
-  width: 944px;
-  margin: 0 auto;
+  width: calc(100% - 60px);
+  padding: 0 30px;
   text-align: center;
+
+  @include xl {
+    width: 944px;
+    margin: 0 auto;
+  }
+}
+
+/* mobile menu */
+
+.menu__button {
+  position: absolute;
+  right: 30px;
+  top: 65px;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.menu__mobile {
+  width: calc(100vw - 52px);
+  height: calc(100vh - 132px);
+  padding: 66px 26px;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+
+  &.is-active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &-wrapper {
+    position: relative;
+  }
+
+  &-lang {
+    writing-mode: vertical-rl;
+    transform: rotate(360deg);
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 42px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    a {
+      color: $grey;
+      text-decoration: none;
+
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+
+  &-link {
+    font-size: 34px;
+    font-weight: bold;
+    text-decoration: none;
+    color: $grey;
+    line-height: 42px;
+    display: block;
+    text-align: left;
+    margin-bottom: 65px;
+
+    &.is-active {
+      color: $black;
+    }
+  }
+
+  &-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 32px;
+    color: $grey;
+    cursor: pointer;
+  }
 }
 
 /* header */
@@ -488,18 +604,35 @@ section {
   padding-top: 0;
 
   &-wrapper {
-    padding: 40px 0 50px 0;
+    padding: 65px 0 36px 0;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-end;
     justify-content: space-between;
+    text-align: left;
+
+    @include xl {
+      padding: 40px 0 50px 0;
+      flex-wrap: nowrap;
+      text-align: center;
+    }
   }
 
   &-title {
     margin: 0;
+    width: 100%;
+
+    @include xl {
+      width: auto;
+    }
   }
 
   &-text {
-    margin: 0;
+    margin-top: 25px;
+
+    @include xl {
+      margin: 0;
+    }
   }
 
   &-lang {
@@ -520,8 +653,10 @@ section {
 
 .section__about {
   &-text {
-    width: 490px;
-    margin: 0 auto;
+    @include xl {
+      width: 490px;
+      margin: 0 auto;
+    }
 
     p {
       width: 100%;
@@ -541,15 +676,30 @@ section {
 .section__skills {
   &-wrapper {
     display: flex;
+    flex-wrap: wrap;
     align-items: stretch;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 83px;
+
+    @include xl {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
   }
   &-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 80px;
+
+    @include xl {
+      margin: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     &-title {
       color: $grey;
@@ -576,7 +726,15 @@ section {
 
 .section__portfolio {
   &-item {
-    margin: 50px 0 100px 0;
+    margin: 30px 0 80px 0;
+
+    @include xl {
+      margin: 50px 0 100px 0;
+    }
+
+    img {
+      width: 100%;
+    }
 
     &-link {
       display: block;
@@ -602,6 +760,11 @@ section {
     cursor: pointer;
     padding: 13px 29px;
     margin-top: 30px;
+    width: 100%;
+
+    @include xl {
+      width: auto;
+    }
 
     &:hover {
       background: $grey;
@@ -625,8 +788,59 @@ section {
   }
 
   &__copy {
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 18px;
+    line-height: 22px;
     color: $grey;
+
+    @include xl {
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+}
+
+/* modal form */
+
+.modal__form {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+
+  &.is-active {
+    opacity: 1;
+    pointer-events: all;
+
+    .modal__form-wrapper {
+      transform: translateX(0);
+    }
+  }
+
+  &-wrapper {
+    background: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 50px 30px;
+    width: 400px;
+    height: calc(100vh - 100px);
+    display: flex;
+    align-content: center;
+    justify-items: center;
+    transform: translateX(100%);
+    transition-delay: 500ms;
+  }
+
+  &-close {
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    color: $grey;
+    font-size: 36px;
   }
 }

@@ -7,5 +7,8 @@
   "scripts": {
     "compile-sass": "sass src/scss/style.scss src/css/style.css",
     "watch-sass": "sass --watch src/scss/style.scss:src/css/style.css"
+  },
+  "dependencies": {
+    "sass": "^1.28.0"
   }
 }
