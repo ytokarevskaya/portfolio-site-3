@@ -7,109 +7,123 @@
 		<link rel="stylesheet" href="src/css/style.css" />
 	</head>
 	<body>
-		<header>
-			<nav>
-				<a href="">Home</a>
-				<a href="">About me</a>
-				<a href="">Skills</a>
-				<a href="">Portfolio</a>
-				<a href="">Contacts</a>
-			</nav>
+		<header class="header">
+			<div class="content-container">
+				<nav class="header__nav">
+					<a href="" class="header__nav-item is-active">Home</a>
+					<a href="" class="header__nav-item">About me</a>
+					<a href="" class="header__nav-item">Skills</a>
+					<a href="" class="header__nav-item">Portfolio</a>
+					<a href="" class="header__nav-item">Contacts</a>
+				</nav>
+			</div>
 		</header>
 		<main>
-			<section>
-				<div>
-					<h1>Denis <br/>Novik</h1>
-					<p>UX | UI designer <br/>24 years old, Minsk</p>
-					<div>
-						<a href="">RU</a> | <span>ENG</span>
+			<section class="section-main">
+				<div class="content-container">
+					<div class="section-main__wrapper">
+						<h1 class="section-main__wrapper-title">Denis <br/>Novik</h1>
+						<p class="section-main__wrapper-subtitle">UX | UI designer <br/>24 years old, Minsk</p>
+						<div class="section-main__wrapper-lang">
+							<a href="">RU</a> | <span>ENG</span>
+						</div>
 					</div>
+					<img src="src/img/header.jpg" alt="Denis Novik UX | UI designer" />
 				</div>
-				<img src="src/img/header.jpg" alt="Denis Novik UX | UI designe" />
 			</section>
-			<section>
-				<h2>About me</h2>
-				<p>Hi, I'm Denis – UX/UI designer from Minsk. I'm interested in design and everything connected with it.</p>
-				<p>I'm studying at courses "Web and mobile design interfaces" in IT-Academy.</p>
-				<p>Ready to implement excellent projects with wonderful people.</p>
-			</section>
-			<section>
-				<h2>Skills</h2>
-				<p>I work in such programs as</p>
-				<div>
-					<div>
-						<img src="src/img/ps.jpg" alt="Adobe Photoshop" />
-						<p>Adobe <br/>Photoshop</p>
-						<div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-						</div>
-					</div>
-					<div>
-						<img src="src/img/ai.jpg" alt="Adobe Illustrator" />
-						<p>Adobe <br/>Illustrator</p>
-						<div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-						</div>
-					</div>
-					<div>
-						<img src="src/img/ae.jpg" alt="Adobe After Effects" />
-						<p>Adobe <br/>After Effects</p>
-						<div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-						</div>
-					</div>
-					<div>
-						<img src="src/img/figma.jpg" alt="Figma" />
-						<p>Figma</p>
-						<div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-							<div class="icon-star"></div>
-						</div>
+			<section class="section-about is-grey">
+				<div class="content-container">
+					<h2 class="section-about__title">About me</h2>
+					<div class="section-about__text">
+						<p>Hi, I'm Denis – UX/UI designer from Minsk. I'm interested in design and everything connected with it.</p>
+						<p>I'm studying at courses "Web and mobile design interfaces" in IT-Academy.</p>
+						<p>Ready to implement excellent projects with wonderful people.</p>
 					</div>
 				</div>
 			</section>
-			<section>
-				<h2>Portfolio</h2>
-				<div>
-					<img src="src/img/portfolio-1.jpg" alt="Online fashion store - Homepage" />
-					<a href="" target="_blank" rel="nofollow">Online fashion store - Homepage</a>
+			<section class="section-skills">
+				<div class="content-container">
+					<h2 class="section-skills__title">Skills</h2>
+					<p>I work in such programs as</p>
+					<div class="section-skills__wrapper">
+						<div class="section-skills__wrapper-item">
+							<img src="src/img/ps.jpg" alt="Adobe Photoshop" />
+							<p>Adobe <br/>Photoshop</p>
+							<div class="section-skills__wrapper-item-stars">
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+							</div>
+						</div>
+						<div class="section-skills__wrapper-item">
+							<img src="src/img/ai.jpg" alt="Adobe Illustrator" />
+							<p>Adobe <br/>Illustrator</p>
+							<div class="section-skills__wrapper-item-stars">
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+							</div>
+						</div>
+						<div class="section-skills__wrapper-item">
+							<img src="src/img/ae.jpg" alt="Adobe After Effects" />
+							<p>Adobe <br/>After Effects</p>
+							<div class="section-skills__wrapper-item-stars">
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+							</div>
+						</div>
+						<div class="section-skills__wrapper-item">
+							<img src="src/img/figma.jpg" alt="Figma" />
+							<p>Figma</p>
+							<div class="section-skills__wrapper-item-stars">
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+								<div class="icon-star"></div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div>
-					<img src="src/img/portfolio-2.jpg" alt="Reebok Store - Concept" />
-					<a href="" target="_blank" rel="nofollow">Reebok Store - Concept</a>
-				</div>
-				<div>
-					<img src="src/img/portfolio-3.jpg" alt="Braun Landing Page - Concept" />
-					<a href="" target="_blank" rel="nofollow">Braun Landing Page - Concept</a>
+			</section>
+			<section class="section-portfolio is-grey">
+				<div class="content-container">
+					<h2 class="section-portfolio__title">Portfolio</h2>
+					<div class="section-portfolio__item">
+						<img class="section-portfolio__item-image" src="src/img/portfolio-1.jpg" alt="Online fashion store - Homepage" />
+						<a href="" target="_blank" rel="nofollow">Online fashion store - Homepage</a>
+					</div>
+					<div class="section-portfolio__item">
+						<img class="section-portfolio__item-image" src="src/img/portfolio-2.jpg" alt="Reebok Store - Concept" />
+						<a href="" target="_blank" rel="nofollow">Reebok Store - Concept</a>
+					</div>
+					<div class="section-portfolio__item">
+						<img class="section-portfolio__item-image" src="src/img/portfolio-3.jpg" alt="Braun Landing Page - Concept" />
+						<a href="" target="_blank" rel="nofollow">Braun Landing Page - Concept</a>
+					</div>
 				</div>
 			</section>
 		</main>
-		<footer>
-			<h2>Contacts</h2>
-			<p>Want to know more or just chat? <br/>You are welcome!</p>
-			<button>Send message</button>
-			<div>
-				<a class="icon-instagram" href="" target="_blank" rel="nofollow"></a>
-				<a class="icon-behance" href="" target="_blank" rel="nofollow"></a>
-				<a class="icon-dribble" href="" target="_blank" rel="nofollow"></a>
-				<a class="icon-linkedin" href="" target="_blank" rel="nofollow"></a>
+		<footer class="footer">
+			<div class="content-container">
+				<h2 class="footer__title">Contacts</h2>
+				<p>Want to know more or just chat? <br/>You are welcome!</p>
+				<button class="footer__button">Send message</button>
+				<div class="footer__socials">
+					<a class="footer__socials-link icon-linkedin" href="" target="_blank" rel="nofollow"></a>
+					<a class="footer__socials-link icon-instagram" href="" target="_blank" rel="nofollow"></a>
+					<a class="footer__socials-link icon-behance" href="" target="_blank" rel="nofollow"></a>
+					<a class="footer__socials-link icon-dribble" href="" target="_blank" rel="nofollow"></a>
+				</div>
+				<div class="footer__copy">Like me on <br/>LinkedIn, Instagram, Behance, Dribble</div>
 			</div>
-			<div>Like me on <br/>LinkedIn, Instagram, Behance, Dribble</div>
 		</footer>
 	</body>
 </html>
