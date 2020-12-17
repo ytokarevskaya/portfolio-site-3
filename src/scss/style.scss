@@ -5,6 +5,29 @@ $grey: #828282;
 $bgGrey: #F6F6F6;
 $white: #fff;
 
+/* mixins */
+
+/* mobile */
+@mixin xs {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+/* tablet */
+@mixin md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+/* desktop */
+@mixin xl {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
 /* fonts */
 
 @font-face {
@@ -438,20 +461,61 @@ $white: #fff;
     display: none;
   }
 
-/* common */
+/* generic */
 
 .content-container {
-    width: 944px;
-    margin: 0 auto;
+    width: calc(100vw - 50px);
     text-align: center;
+    padding: 0 25px;
+
+    @include xl {
+      width: 944px;
+      margin: 0 auto;
+    }
 }
 
 section {
-    padding: 105px 0;
+    padding: 65px 0;
+
+    @include xl {
+      padding: 105px 0;
+    }
 
     &.is-grey {
         background: $bgGrey;
     }
+}
+
+.is-mobile {
+  display: block;
+
+  @include md {
+    display: none;
+  }
+}
+
+.is-tablet {
+  display: none;
+
+  @include md {
+    display: block;
+  }
+
+  @include xl {
+    display: none;
+  }
+}
+
+.is-desktop {
+  display: none;
+
+  @include xl {
+    display: block;
+  }
+}
+
+.is-animated {
+  transition: all 0.4s ease;
 }
 
 /* header */
@@ -479,23 +543,118 @@ section {
     }
 }
 
+/* mobile menu */
+
+.mobile-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $white;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  &.is-opened {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__button {
+    border: 0;
+    background: transparent;
+    font-size: 33px;
+    position: absolute;
+    top: 70px;
+    right: 25px;
+    cursor: pointer;
+  }
+
+  &__nav {
+    &-item {
+      display: block;
+      font-size: 34px;
+      font-weight: bold;
+      line-height: 42px;
+      text-align: left;
+      text-decoration: none;
+      margin-bottom: 65px;
+      color: $grey;
+
+      &.is-active {
+        color: $black;
+      }
+    }
+  }
+
+  &__lang {
+    font-weight: bold;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    position: absolute;
+    right: 25px;
+    bottom: 65px;
+    font-size: 34px;
+    line-height: 42px;
+
+    a {
+        color: $grey;
+        text-decoration: none;
+
+        &:hover {
+            color: $black;
+        }
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 65px;
+    right: 25px;
+    font-size: 23px;
+    color: $grey;
+    cursor: pointer;
+  }
+}
+
 /* sections */
 
 .section-main {
-    padding-top: 0;
+    @include xl {
+      padding-top: 0;
+    }
 
     &__wrapper {
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        padding: 40px 0;
+        flex-wrap: wrap;
+
+        @include xl {
+          flex-wrap: nowrap;
+          padding: 40px 0;
+        }
 
         &-title {
             margin: 0;
+            text-align: left;
+            width: 100%;
+
+            @include xl {
+              text-align: center;
+              width: auto;
+            }
         }
 
         &-subtitle {
             margin: 10px 0;
+            text-align: left;
+
+            @include xl {
+              text-align: center;
+            }
         }
 
         &-lang {
@@ -514,12 +673,25 @@ section {
             }
         }
     }
+
+    &__img {
+      width: auto;
+      margin: 37px auto 0 auto;
+
+      @include md {
+        margin: 0 auto;
+      }
+    }
 }
 
 .section-about {
     &__text {
-        width: 485px;
-        margin: 0 auto;
+        width: 100%;
+
+        @include xl {
+          width: 485px;
+          margin: 0 auto;
+        }
     }
 }
 
@@ -533,17 +705,42 @@ section {
         display: flex;
         justify-content: space-between;
         align-items: stretch;
+        flex-wrap: wrap;
+
+        @include xl {
+          flex-wrap: nowrap;
+        }
 
         &-item {
-            width: 25%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
+            margin-bottom: 85px;
+
+            &:last-child {
+              margin-bottom: 25px;
+            }
+
+            @include xl {
+              width: 25%;
+              margin-bottom: 0;
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
 
             p {
                 color: $grey;
                 margin: 24px 0 40px 0;
+                font-size: 14px;
+                font-weight: bold;
+
+                @include xl {
+                  font-size: 18px;
+                }
             }
 
             &-stars {
@@ -561,6 +758,10 @@ section {
 .section-portfolio {
     &__item {
         margin-bottom: 100px;
+
+        &-image {
+          max-width: 100%;
+        }
 
         a {
             display: block;
@@ -591,6 +792,11 @@ section {
         padding: 13px 30px;
         cursor: pointer;
         margin: 43px 0 86px 0;
+        width: 100%;
+
+        @include xl {
+          width: auto;
+        }
 
         &:hover {
             background: $grey;
@@ -605,7 +811,11 @@ section {
             font-size: 40px;
             color: $black;
             text-decoration: none;
-            margin: 0 30px;
+            margin: 0 25px;
+
+            @include xl {
+              margin: 0 30px;
+            }
 
             &:hover {
                 color: $grey;
@@ -619,4 +829,89 @@ section {
         line-height: 17px;
         margin-top: 45px;
     }
+
+    &__title {
+      margin-top: 0;
+
+      @include xl {
+        margin-top: 28px;
+      }
+    }
+}
+
+/* modal */ 
+
+.modal {
+  &__overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    pointer-events: none;
+
+    &.is-opened {
+      visibility: visible;
+      pointer-events: all;
+    }
+  }
+
+  &__wrapper {
+    background: $white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 400px;
+    height: calc(100vh - 210px);
+    padding: 105px 35px;
+
+    &-form {
+      width: 100%;
+      text-align: right;
+
+      input, textarea {
+        width: calc(100% - 20px);
+        margin: 10px 0;
+        padding: 5px 10px;
+      }
+
+      textarea {
+        resize: none;
+        height: 120px;
+      }
+
+      input {
+        &.modal__wrapper-form-send {
+          background: $black;
+          color: $white;
+          font-weight: bold;
+          border: none;
+          border-radius: 25px;
+          padding: 13px 30px;
+          cursor: pointer;
+          width: auto;
+  
+          &:hover {
+              background: $grey;
+          }
+        }
+      }
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    font-size: 30px;
+    color: $grey;
+    cursor: pointer;
+
+    &:hover {
+      color: $black;
+    }
+  }
 }
